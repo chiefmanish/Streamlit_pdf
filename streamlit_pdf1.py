@@ -22,26 +22,6 @@ def get_pdf_contents(pdf1, pdf2):
     extracted_text2 = extract_text_from_pdf(pdf2)
     return extracted_text1, extracted_text2
 
-# Function to call the Databricks API
-# def call_databricks_api(pdf1_content, pdf2_content, question):
-#     DATABRICKS_URL = "https://adb-1820764323029816.16.azuredatabricks.net/api/2.0/jobs/run-now"
-#     TOKEN = "dapi81add3935cf4014069dce8a94283ac37"
-#     JOB_ID = "171331411506288"
-
-#     headers = {
-#         "Authorization": f"Bearer {TOKEN}"
-#     }
-#     payload = {
-#         "job_id": JOB_ID,
-#         "notebook_params": {
-#             "pdf1": pdf1_content,
-#             "pdf2": pdf2_content,
-#             "question": question
-#         }
-#     }
-
-#     response = requests.post(DATABRICKS_URL, headers=headers, json=payload)
-#     return response
 
 def get_result(databricks_token, server_endpoint, extracted_text1, extracted_text2, question):
 

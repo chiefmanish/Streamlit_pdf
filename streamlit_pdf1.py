@@ -18,11 +18,11 @@ def extract_text_from_pdf(pdf_path):
 
 def get_pdf_contents(pdf1, pdf2):
     # Extract text from the PDF and get the page numbers
-    if pdf1 is empty:
+    if pdf1 is empty():
         extracted_text1 = ""
     else:
         extracted_text1 = extract_text_from_pdf(pdf1)
-    if pdf2 is empty:
+    if pdf2 is empty():
         extracted_text2 = ""
     else:
         extracted_text2 = extract_text_from_pdf(pdf2)

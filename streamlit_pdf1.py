@@ -18,8 +18,14 @@ def extract_text_from_pdf(pdf_path):
 
 def get_pdf_contents(pdf1, pdf2):
     # Extract text from the PDF and get the page numbers
-    extracted_text1 = extract_text_from_pdf(pdf1)
-    extracted_text2 = extract_text_from_pdf(pdf2)
+    if pdf1 is empty:
+        extracted_text1 = ""
+    else:
+        extracted_text1 = extract_text_from_pdf(pdf1)
+    if pdf2 is empty:
+        extracted_text2 = ""
+    else:
+        extracted_text2 = extract_text_from_pdf(pdf2)
     return extracted_text1, extracted_text2
 
 
@@ -121,7 +127,7 @@ def main():
             else:
                 st.write("Error: Unable to get the answer from Databricks.")
         else:
-            st.write("Please upload both PDFs and enter a question.")
+            st.write("Please upload PDF and enter a question.")
 
 main()
 

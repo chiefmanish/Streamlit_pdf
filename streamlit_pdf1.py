@@ -110,7 +110,7 @@ def main():
     question = st.text_input("Enter your question")
 
     if st.button("Get Answer"):
-        if uploaded_file1 is not None and uploaded_file2 is not None and question:
+        if uploaded_file1 is not None or uploaded_file2 is not None and question:
             # Read PDF content
             content1, content2 = get_pdf_contents(uploaded_file1, uploaded_file2)
             # Make a request to Databricks API (assuming a REST API endpoint is available)

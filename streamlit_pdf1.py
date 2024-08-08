@@ -106,8 +106,8 @@ def get_result(databricks_token, server_endpoint, extracted_text1, extracted_tex
 
 def main():
     
-    databricks_token = "dapia9c6158fc35c99df89e8f4a0b9aaaa53"
-    server_endpoint = "https://adb-1175933555285091.11.azuredatabricks.net/serving-endpoints"
+    databricks_token = "dapi231e912aa93cedec276065cb8995cce5"
+    server_endpoint = "https://adb-1769509101973077.17.azuredatabricks.net/serving-endpoints"
     # Streamlit app layout
     st.title("PDF Question Answering App")
 

@@ -2,12 +2,14 @@ import streamlit as st
 import faiss
 import numpy as np
 import pickle
-from transformers import GPT2Tokenizer, GPT2LMHeadModel
-import torch
+from sentence_transformers import SentenceTransformer
+import openai
 
 # Load the precomputed FAISS index and chunks
 faiss_index_path = "/Users/manishkumar/Downloads/faiss_index.bin"
 chunks_path = "/Users/manishkumar/Downloads/chunks.pkl"
+databricks_token = "dapi231e912aa93cedec276065cb8995cce5"
+server_endpoint = "https://adb-1769509101973077.17.azuredatabricks.net/serving-endpoints"
 
 # Load FAISS index
 index = faiss.read_index(faiss_index_path)
@@ -16,34 +18,50 @@ index = faiss.read_index(faiss_index_path)
 with open(chunks_path, "rb") as f:
     all_chunks = pickle.load(f)
 
-# Load the GPT-2 model and tokenizer
-tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
-gpt2_model = GPT2LMHeadModel.from_pretrained('gpt2')
+# Load the sentence transformer model
+model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
-def get_relevant_chunks(query, index, chunks, top_k=5):
-    query_embedding = tokenizer.encode(query, return_tensors='pt')
-    query_embedding = query_embedding.numpy()
+# Function to get the most relevant chunks
+def get_relevant_chunks(query, index, model, chunks, top_k=5):
+    query_embedding = model.encode([query], convert_to_numpy=True)
     D, I = index.search(query_embedding, top_k)
-    relevant_chunks = [chunks[i] for i in I[0]]
+    relevant_chunks = [chunks[i] for i in I[0] if i < len(chunks)]
     return relevant_chunks
 
-def get_result(extracted_text, question):
-    prompt = f"This is the relevant content: {extracted_text}\nRemember it and this is the question that you have to answer from the content provided: {question}"
-    
-    # Tokenize and truncate the prompt
-    inputs = tokenizer(prompt, return_tensors='pt', truncation=True, max_length=1024)
-    
-    # Generate text
-    outputs = gpt2_model.generate(
-        inputs['input_ids'],
-        max_new_tokens=150,  # Adjust the number of new tokens as needed
-        num_return_sequences=1,
-        pad_token_id=tokenizer.eos_token_id
+# Function to get results from the Databricks model
+def get_result(databricks_token, server_endpoint, extracted_text, question):
+    openai.api_key = databricks_token
+    openai.api_base = server_endpoint
+
+    response = openai.ChatCompletion.create(
+        model="databricks-dbrx-instruct",
+        messages=[
+
+            {
+                "role": "user",
+                "content": f"""
+                    As Osho, answer the following question with wisdom and insight drawn from your teachings:
+        
+                    Question: "{question}"
+        
+                    Content from which you must have to find your answer of the question and frame from it:
+                    "{extracted_text}"
+        
+                    If the question does not relate to the content provided, respond with:
+                    "Please ask a question related to one of the following topics: 'From Darkness to Light', 'From Death to Deathlessness', 'From Ignorance to Innocence', 'From Misery to Enlightenment', 'From Personality to Individuality', 'From Sex to Superconsciousness', 'From the False to the Truth', or 'From Unconsciousness to Consciousness'."
+        
+                    Your response should be profound, contemplative, and in line with the spiritual guidance that Osho is known for.
+                """
+            }
+
+        ],
+        temperature=0,
+        top_p=0.95,
+        max_tokens=500
     )
-    
-    # Decode the output
-    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    return response
+
+    return response['choices'][0]['message']['content']
+
 
 # Streamlit UI
 st.title("Document Search App")
@@ -51,9 +69,9 @@ query = st.text_input("Enter your query:")
 
 if st.button("Search"):
     if query:
-        relevant_chunks = get_relevant_chunks(query, index, all_chunks)
-        response = get_result(" ".join(relevant_chunks), query)
-        st.write("Response:")
+        relevant_chunks = get_relevant_chunks(query, index, model, all_chunks)
+        response = get_result(databricks_token, server_endpoint, " ".join(relevant_chunks), query)
         st.write(response)
     else:
         st.write("Please enter a query to search.")
+

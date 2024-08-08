@@ -70,7 +70,7 @@ def get_result(databricks_token, server_endpoint, extracted_text, question):
                     If the question does not relate to the content provided, respond with:
                     "Please ask a question related to one of the following topics: 'From Darkness to Light', 'From Death to Deathlessness', 'From Ignorance to Innocence', 'From Misery to Enlightenment', 'From Personality to Individuality', 'From Sex to Superconsciousness', 'From the False to the Truth', or 'From Unconsciousness to Consciousness'."
 
-                    Your response should be profound, contemplative, and in line with the spiritual guidance that Osho is known for.
+                    Your response should be profound, contemplative, and in line with the spiritual guidance that Osho is known for. And also answer in an interesting way of explaining like a teacher or guru is teaching 
                 """
             }
 

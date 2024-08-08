@@ -79,7 +79,7 @@ def get_result(databricks_token, server_endpoint, extracted_text, question):
         max_tokens=500
     )
 
-    return response['choices'][0]['message']['content']
+    return response.choices[0].message.content
 
 
 # Streamlit UI

@@ -3,3 +3,7 @@ requests
 streamlit
 pandas
 openai
+pickle
+transformers
+torch
+faiss

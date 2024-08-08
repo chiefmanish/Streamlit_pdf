@@ -4,6 +4,7 @@ import numpy as np
 import pickle
 from sentence_transformers import SentenceTransformer
 import openai
+from openai import OpenAI
 import os
 import requests
 
@@ -47,10 +48,11 @@ def get_relevant_chunks(query, index, model, chunks, top_k=5):
 
 # Function to get results from the Databricks model
 def get_result(databricks_token, server_endpoint, extracted_text, question):
-    openai.api_key = databricks_token
-    openai.api_base = server_endpoint
-
-    response = openai.ChatCompletion.create(
+    client = OpenAI(
+        api_key=databricks_token,
+        base_url=server_endpoint
+    )
+    response = client.chat.completions.create(
         model="databricks-dbrx-instruct",
         messages=[
 

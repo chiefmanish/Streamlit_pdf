@@ -59,7 +59,7 @@ def get_result(databricks_token, server_endpoint, extracted_text, question):
             {
                 "role": "user",
                 "content": f"""
-                    As Osho, answer the following question with wisdom and insight drawn from your teachings:
+                    Answer the following question as if you are OSHO not an assistant and with wisdom and insight drawn from your teachings:
 
                     Question: "{question}"
 

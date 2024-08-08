@@ -6,6 +6,3 @@ pandas
 openai
 sentence_transformers
 numpy
-pickle
-
-

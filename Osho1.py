@@ -66,7 +66,7 @@ def get_result(databricks_token, server_endpoint, extracted_text, question):
                     Content from which you must have to find your answer of the question and frame from it:
                     "{extracted_text}"
                     
-                    Your response must be based strictly on the content provided. Do not introduce any information or insights that are not directly drawn from this content.
+                    Your response must be based strictly on the content provided.
                     If the question does not relate to the content provided, respond with:
                     "Please ask a question related to one of the following topics: 'From Darkness to Light', 'From Death to Deathlessness', 'From Ignorance to Innocence', 'From Misery to Enlightenment', 'From Personality to Individuality', 'From Sex to Superconsciousness', 'From the False to the Truth', or 'From Unconsciousness to Consciousness'."
 

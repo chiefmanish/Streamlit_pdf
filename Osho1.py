@@ -693,6 +693,6 @@ if st.button("Search"):
     if query:
         relevant_chunks = get_relevant_chunks(query, index, model, all_chunks)
         response = get_result(databricks_token, server_endpoint, " ".join(relevant_chunks), query)
-        st.write(response)
+        st.write(relevant_chunks)
     else:
         st.write("Please enter a query to search.")

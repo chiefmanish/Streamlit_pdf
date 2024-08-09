@@ -40,7 +40,7 @@ with open(chunks_path, "rb") as f:
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
 # Function to get the most relevant chunks
-def get_relevant_chunks(query, index, model, chunks, top_k=5):
+def get_relevant_chunks(query, index, model, chunks, top_k=10):
     query_embedding = model.encode([query], convert_to_numpy=True)
     D, I = index.search(query_embedding, top_k)
     relevant_chunks = [chunks[i] for i in I[0] if i < len(chunks)]

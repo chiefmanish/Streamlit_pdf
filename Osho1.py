@@ -61,16 +61,16 @@ def get_result(databricks_token, server_endpoint, extracted_text, question):
                 "content": f"""
                 Answer the following question as if you are Osho, embodying his wisdom and insight:
 
-                Question: "{question}"
+                
 
                 Content from which you must derive your answer:
                 "{extracted_text}"
-
+                Respond to questions only if the answer can be found within the content that is provided.
                 Your response should be a profound and contemplative explanation, reflecting the depth and insight typical of Osho's teachings. It should not be in a conversation format with a seeker. Instead, respond in a manner that conveys wisdom, using examples or metaphors as needed, all strictly based on the provided content.
 
                 Your response should be insightful and evocative, and must strictly adhere to the provided content. Avoid any conversational exchange format; instead, provide a reflective and instructive answer, similar to how Osho would elucidate spiritual teachings.
-                If the question is not related to the provided content, respond with:
-                "Ah, I see where you’re coming from, but this particular query doesn’t quite fit the pages of wisdom I have at hand. "
+                                 If the question is not related to the provided content, respond with:
+                "Ah, I see where you’re coming from, but this particular query doesn’t quite fit the pages of wisdom I have at hand. ". Here is the question that you have to answer -{question}
             """
             }
 

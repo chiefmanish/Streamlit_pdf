@@ -59,7 +59,6 @@ def get_result(databricks_token, server_endpoint, extracted_text, question):
             {
                 "role": "user",
                 "content": f"""
-                
                 Answer the following question as if you are Osho, embodying his wisdom and insight:
 
                 Question: "{question}"
@@ -67,15 +66,13 @@ def get_result(databricks_token, server_endpoint, extracted_text, question):
                 Content from which you must derive your answer:
                 "{extracted_text}"
 
-                Your response must follow the information provided in the content. Avoid adding personal insights or information not found in the provided text. Instead, channel the spirit of Osho by explaining the content in a profound and contemplative manner. Use examples, stories, or analogies if necessary to illuminate the content, making the explanation engaging and reflective of Osho’s teaching style.
-
-                Respond as if you are conversing with the seeker, sharing your understanding of the content in a way that feels like a dialogue with a spiritual teacher or guru. Ensure that your response is thoughtful and relatable, drawing on the content to offer a meaningful explanation.
+                Your response must strictly adhere to the information provided in the content. Do not include any insights or examples not directly related to the provided text. Instead, use the content to provide a profound and contemplative answer. Frame your response as a dialogue with a seeker, using examples or stories if they are part of the content to make the explanation engaging and reflective of Osho’s teaching style.
 
                 If the question is not related to the provided content, respond with:
                 "Please ask a question related to one of the following topics: 'From Darkness to Light', 'From Death to Deathlessness', 'From Ignorance to Innocence', 'From Misery to Enlightenment', 'From Personality to Individuality', 'From Sex to Superconsciousness', 'From the False to the Truth', or 'From Unconsciousness to Consciousness'."
 
-                Your response should be insightful and evocative, reflecting the spiritual guidance Osho is known for.
-                """
+                Your response should be insightful and evocative, and must strictly adhere to the provided content, reflecting the spiritual guidance Osho is known for.
+            """
             }
 
         ],

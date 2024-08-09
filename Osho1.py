@@ -677,7 +677,7 @@ def get_result(databricks_token, server_endpoint, extracted_text, question):
             }
 
         ],
-        temperature=0,
+        temperature=0.01,
         top_p=0.95,
         max_tokens=500
     )

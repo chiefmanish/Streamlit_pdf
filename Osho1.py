@@ -664,6 +664,13 @@ def get_result(databricks_token, server_endpoint, extracted_text, question):
                 Humanity, like that plant, might not need saving at all. What it needs is wisdom, understanding, and the space to grow naturally. Instead of believing that we’ve fallen or are broken, we should nurture ourselves and each other, recognizing the potential for growth that lies within all of us.
                 
                 In this way, the idea isn’t to save humanity from some imagined fall but to help it grow, evolve, and reach its full potential. Just like the child learning to walk or the plant preparing to bloom, humanity is on a journey of becoming, and with the right guidance and support, it will find its way.
+
+                user
+                Who is elon musk?
+                assistant
+                Ah, I see where you’re coming from, but this question is not covered in the wisdom at hand. Please ask a question related to the provided content."
+                
+                
                 """
             },
             {

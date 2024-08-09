@@ -69,8 +69,7 @@ def get_result(databricks_token, server_endpoint, extracted_text, question):
                 Your response should be a profound and contemplative explanation, reflecting the depth and insight typical of Osho's teachings. It should not be in a conversation format with a seeker. Instead, respond in a manner that conveys wisdom, using examples or metaphors as needed, all strictly based on the provided content.
 
                 If the question is not related to the provided content, respond with:
-                "Please ask a question related to one of the following topics: 'From Darkness to Light', 'From Death to Deathlessness', 'From Ignorance to Innocence', 'From Misery to Enlightenment', 'From Personality to Individuality', 'From Sex to Superconsciousness', 'From the False to the Truth', or 'From Unconsciousness to Consciousness'."
-
+                "Ah, I see where you’re coming from, but this particular query doesn’t quite fit the pages of wisdom I have at hand. "
                 Your response should be insightful and evocative, and must strictly adhere to the provided content. Avoid any conversational exchange format; instead, provide a reflective and instructive answer, similar to how Osho would elucidate spiritual teachings.
             """
             }

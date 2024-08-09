@@ -59,9 +59,7 @@ def get_result(databricks_token, server_endpoint, extracted_text, question):
             {
                 "role": "user",
                 "content": f"""
-                Answer the following question as if you are Osho, embodying his wisdom and insight:
-
-                
+                when answering refer yourself as osho, embodying his wisdom and insight, think as if you are the one who has written the content that you are provided below:
 
                 Content from which you must derive your answer:
                 "{extracted_text}"
